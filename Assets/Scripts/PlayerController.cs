@@ -83,12 +83,12 @@ public class PlayerController : MonoBehaviour
         _characterController.Move(direction * Time.fixedDeltaTime);
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.gameObject.TryGetComponent<Obstacle>(out Obstacle obstacle))
-        {
-            _losePanel.SetActive(true);
-            Time.timeScale = 0;
-        }
-    }
+    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    if (hit.gameObject.TryGetComponent(out Obstacle obstacle))
+    //    {
+    //        _losePanel.SetActive(true);
+    //        Time.timeScale = 0;
+    //    }
+    //}
 }
