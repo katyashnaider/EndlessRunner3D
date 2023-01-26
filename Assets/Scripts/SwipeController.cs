@@ -1,26 +1,27 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwipeController : MonoBehaviour
+public class SwipeController : MonoBehaviour, IInput
 {
     private bool _isDraging = false;
     private Vector2 _startTouch, _swipeDelta;
 
-    public static bool Tap { get; private set; }
-    public static bool SwipeLeft { get; private set; }
-    public static bool SwipeRight { get; private set; }
-    public static bool SwipeUp { get; private set; }
-    public static bool SwipeDown { get; private set; }
+    public bool IsTapped { get; set; }
+    public bool IsSwipedLeft { get; set; }
+    public bool IsSwipedRight { get; set; }
+    public bool IsSwipedUp { get; set; }
+    public bool IsSwipedDown { get; set; }
 
     private void Update()
     {
-        Tap = SwipeDown = SwipeUp = SwipeLeft = SwipeRight = false;
+        IsTapped = IsSwipedDown = IsSwipedUp = IsSwipedLeft = IsSwipedRight = false;
 
         #region ΟΚ-βεπρθÿ
         if (Input.GetMouseButtonDown(0))
         {
-            Tap = true;
+            IsTapped = true;
             _isDraging = true;
             _startTouch = Input.mousePosition;
         }
@@ -36,7 +37,7 @@ public class SwipeController : MonoBehaviour
         {
             if (Input.touches[0].phase == TouchPhase.Began)
             {
-                Tap = true;
+                IsTapped = true;
                 _isDraging = true;
                 _startTouch = Input.touches[0].position;
             }
@@ -70,17 +71,16 @@ public class SwipeController : MonoBehaviour
             {
 
                 if (x < 0)
-                    SwipeLeft = true;
+                    IsSwipedLeft = true;
                 else
-                    SwipeRight = true;
+                    IsSwipedRight = true;
             }
             else
             {
-
                 if (y < 0)
-                    SwipeDown = true;
+                    IsSwipedDown = true;
                 else
-                    SwipeUp = true;
+                    IsSwipedUp = true;
             }
 
             Reset();

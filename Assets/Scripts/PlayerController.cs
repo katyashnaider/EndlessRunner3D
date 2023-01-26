@@ -1,7 +1,9 @@
+using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -10,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _lineDistance = 4;
     [SerializeField] private float _jumpForce = 3;
     [SerializeField] private float _gravity = 3;
+    [SerializeField] private SwipeController _swipeController;
+    [SerializeField] private GameObject _losePanel;
 
     private CharacterController _characterController;
     private Vector3 _moveDirection;
@@ -25,19 +29,19 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (SwipeController.SwipeRight)
+        if (_swipeController.IsSwipedRight)
         {
             if (_lineToMove < _shiftRight)
                 _lineToMove++;
         }
 
-        if (SwipeController.SwipeLeft)
+        if (_swipeController.IsSwipedLeft)
         {
             if (_lineToMove > _shiftLeft)
                 _lineToMove--;
         }
 
-        if (SwipeController.SwipeUp)
+        if (_swipeController.IsSwipedUp)
         {
             if (_characterController.isGrounded)
                 Jump();
@@ -50,7 +54,16 @@ public class PlayerController : MonoBehaviour
         else if (_lineToMove == _shiftRight)
             targetPosition += Vector3.right * _lineDistance;
 
-        transform.position = targetPosition;
+        if (transform.position == targetPosition)
+            return;
+
+        Vector3 difference = targetPosition - transform.position;
+        Vector3 moveDirection = difference.normalized * 25 * Time.deltaTime;
+
+        if (moveDirection.sqrMagnitude < difference.sqrMagnitude)
+            _characterController.Move(moveDirection);
+        else
+            _characterController.Move(difference);
     }
 
     private void FixedUpdate()
@@ -70,4 +83,12 @@ public class PlayerController : MonoBehaviour
         _characterController.Move(direction * Time.fixedDeltaTime);
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.TryGetComponent<Obstacle>(out Obstacle obstacle))
+        {
+            _losePanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
 }
