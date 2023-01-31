@@ -1,9 +1,8 @@
-using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoadGenerator : PoolManager
+public class RoadGenerator : MonoBehaviour
 {
     [SerializeField] private Transform _player;
     [SerializeField] private ObjectPool _pool;
@@ -18,10 +17,12 @@ public class RoadGenerator : PoolManager
 
     private void Start()
     {
-        _spawnPosition = CalculateRoadStartPosition() - _startPlayerOffset;
+        _spawnPosition = _player.position.z + _roadLength / 2 - _startPlayerOffset;
 
         for (int i = 0; i < _startCountRoads; i++)
+        {
             SpawnRoad();
+        }
     }
 
     private void Update()
@@ -35,7 +36,7 @@ public class RoadGenerator : PoolManager
 
     private void SpawnRoad()
     {
-        GameObject nextRoad = _pool.Spawn();
+        GameObject nextRoad = _pool.Get();
         nextRoad.transform.position = transform.forward * _spawnPosition;
         nextRoad.transform.rotation = transform.rotation;
 
@@ -45,12 +46,12 @@ public class RoadGenerator : PoolManager
 
     private void DeleteRoad()
     {
-        _pool.Despawn(_activeRoads[0]);
+        _pool.Put(_activeRoads[0]);
         _activeRoads.RemoveAt(0);
     }
 
-    private float CalculateRoadStartPosition()
-    {
-        return _player.position.z + _roadLength / 2;
-    }
+    //private float CalculateRoadStartPosition()
+    //{
+    //    return _player.position.z + _roadLength / 2;
+    //}
 }

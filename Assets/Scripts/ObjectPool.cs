@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Assets.Scripts
-{
     public class ObjectPool : MonoBehaviour
     {
         [SerializeField] private int _capacity;
@@ -22,11 +20,11 @@ namespace Assets.Scripts
             for (int i = 0; i < _capacity; i++)
             {
                 spawnedObject = CreateRandomObject();
-                Despawn(spawnedObject);
+                Put(spawnedObject);
             }
         }
 
-        public GameObject Spawn()
+        public GameObject Get()
         {
             GameObject spawnedObject;
             int poolCount = _pool.Count;
@@ -46,7 +44,7 @@ namespace Assets.Scripts
             return spawnedObject;
         }
 
-        public void Despawn(GameObject prefab)
+        public void Put(GameObject prefab)
         {
             prefab.SetActive(false);
             _pool.Add(prefab);
@@ -57,4 +55,3 @@ namespace Assets.Scripts
             return Instantiate(_prefabs[Random.Range(0, _prefabs.Count)]);
         }
     }
-}

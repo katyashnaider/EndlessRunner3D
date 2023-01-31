@@ -14,6 +14,7 @@ public class GameOverScreen : MonoBehaviour
     private void Start()
     {
         _canvasGroup.alpha = 0;
+        Time.timeScale = 1;
     }
 
     private void OnEnable()
@@ -32,7 +33,7 @@ public class GameOverScreen : MonoBehaviour
     private void OnRestartButtonClick()
     {
         SceneManager.LoadScene(0);
-        _canvasGroup.alpha = 1;
+        _canvasGroup.alpha = 0;
         Time.timeScale = 1;
     }
 
