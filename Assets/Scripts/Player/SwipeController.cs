@@ -37,19 +37,19 @@ public class SwipeController : MonoBehaviour
             }
 
             //прыжок и проскальзывание вниз
-            //if (Mathf.Abs(swipeDirection.y) >= _delta)
-            //{
-            //    if (swipeDirection.y > 0)
-            //    {
-            //        Swiped?.Invoke(Vector2.right); //заменить на прыжок
-            //        _isDraing = false;
-            //    }
-            //    else
-            //    {
-            //        Swiped?.Invoke(Vector2.left); //заменить на проскальзывание вниз
-            //        _isDraing = false;
-            //    }
-            //}
+            if (Mathf.Abs(swipeDirection.y) >= _delta)
+            {
+                if (swipeDirection.y > 0)
+                {
+                    Swiped?.Invoke(Vector2.up); //прыжок
+                    _isDraing = false;
+                }
+                //else
+                //{
+                //    Swiped?.Invoke(Vector2.left); //проскальзывание вниз
+                //    _isDraing = false;
+                //}
+            }
         }
     }
 }

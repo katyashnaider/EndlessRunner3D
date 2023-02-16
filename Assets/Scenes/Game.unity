@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b65318cbb1e9945aa7cd07c0c121af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delta: 500
+  _delta: 300
 --- !u!4 &1027906775
 Transform:
   m_ObjectHideFlags: 0
@@ -849,8 +849,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1000
-  _jumpForce: 6
   _stepPosition: 1
+  _duration: 0.7
+  _groundLenght: 1.1
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _yAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.16346347
+      value: 0.7926284
+      inSlope: 8.504112
+      outSlope: 8.504112
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.5735171
+    - serializedVersion: 3
+      time: 0.22598839
+      value: 1.4840393
+      inSlope: 15.882346
+      outSlope: 15.882346
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 3
+      inSlope: -0.08335843
+      outSlope: -0.08335843
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5528291
+      value: 2.944837
+      inSlope: -2.058898
+      outSlope: -2.058898
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75894165
+      value: 1.4920044
+      inSlope: -12.859141
+      outSlope: -12.859141
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8241156
+      value: 0.8220246
+      inSlope: -8.037014
+      outSlope: -8.037014
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.409435
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.06081098
+      outSlope: 0.06081098
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2778648
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _swipeController: {fileID: 1027906774}
   _roadPoints:
   - {fileID: 142861056}
@@ -877,7 +959,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1331837172}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
