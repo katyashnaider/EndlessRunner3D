@@ -5,7 +5,7 @@ public class SwipeController : MonoBehaviour
 {
     [SerializeField] private float _delta;
 
-    private bool _isDraing = false;
+    private bool _isDragging = false;
     private Vector3 _startTouch;
 
     public event Action<Vector2> Swiped;
@@ -15,10 +15,10 @@ public class SwipeController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _startTouch = Input.mousePosition;
-            _isDraing = true;
+            _isDragging = true;
         }
 
-        if (Input.GetMouseButton(0) && _isDraing)
+        if (Input.GetMouseButton(0) && _isDragging)
         {
             Vector2 swipeDirection = Input.mousePosition - _startTouch;
 
@@ -27,12 +27,12 @@ public class SwipeController : MonoBehaviour
                 if (swipeDirection.x > 0)
                 {
                     Swiped?.Invoke(Vector2.right);
-                    _isDraing = false;
+                    _isDragging = false;
                 }
                 else
                 {
                     Swiped?.Invoke(Vector2.left);
-                    _isDraing = false;
+                    _isDragging = false;
                 }
             }
 
@@ -42,13 +42,13 @@ public class SwipeController : MonoBehaviour
                 if (swipeDirection.y > 0)
                 {
                     Swiped?.Invoke(Vector2.up); //прыжок
-                    _isDraing = false;
+                    _isDragging = false;
                 }
-                //else
-                //{
-                //    Swiped?.Invoke(Vector2.left); //проскальзывание вниз
-                //    _isDraing = false;
-                //}
+                else
+                {
+                    Swiped?.Invoke(Vector2.down); //проскальзывание вниз
+                    _isDragging = false;
+                }
             }
         }
     }

@@ -826,6 +826,7 @@ GameObject:
   - component: {fileID: 1331837178}
   - component: {fileID: 1331837177}
   - component: {fileID: 1331837176}
+  - component: {fileID: 1331837174}
   - component: {fileID: 1331837173}
   - component: {fileID: 1331837175}
   - component: {fileID: 1331837180}
@@ -938,6 +939,22 @@ MonoBehaviour:
   - {fileID: 142861056}
   - {fileID: 78813242}
   - {fileID: 174362389}
+  _standartCollider: {fileID: 1331837176}
+  _colliderJumping: {fileID: 1331837174}
+--- !u!136 &1331837174
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331837172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.48, z: 0}
 --- !u!114 &1331837175
 MonoBehaviour:
   m_ObjectHideFlags: 0

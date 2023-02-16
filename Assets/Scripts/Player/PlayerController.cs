@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AnimationCurve _yAnimation;
     [SerializeField] private SwipeController _swipeController;
     [SerializeField] private Transform[] _roadPoints;
+    [SerializeField] private CapsuleCollider _standartCollider;
+    [SerializeField] private CapsuleCollider _colliderJumping;
 
     private Rigidbody _rigidbody;
     private Coroutine _coroutine;
@@ -37,6 +39,9 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+
+        //_colliderJumping.enabled = false;
+        //_standartCollider.enabled = true;
     }
 
     private void FixedUpdate()
@@ -82,6 +87,11 @@ public class PlayerController : MonoBehaviour
             Jump(direction);
         }
 
+        if (direction == Vector2.down)
+        {
+            StartCoroutine(RollOver());
+        }
+
         _coroutine = StartCoroutine(ChangeRoad(_roadPoints[_index].position.x, _stepPosition));
     }
 
@@ -110,23 +120,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //private IEnumerator JumpByTime(Vector3 target)
-    //{
-    //    float progress = 0f;
-    //    float expiredSeconds = 0f;
-    //    Vector3 startPosition = transform.position;
-
-    //    while (progress < 1)
-    //    {
-    //        expiredSeconds += 1;
-    //        progress = expiredSeconds / _duration;
-
-    //        transform.position = Vector3.Lerp(startPosition, target, progress);
-
-    //        yield return null;
-    //    }
-    //}
-
     private IEnumerator AnimationByTime(float duration)
     {
         float progress = 0f;
@@ -145,5 +138,16 @@ public class PlayerController : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private IEnumerator RollOver()
+    {
+        _colliderJumping.enabled = true;
+        _standartCollider.enabled = false;
+
+        yield return new WaitForSeconds(1);
+
+        _colliderJumping.enabled = false;
+        _standartCollider.enabled = true;
     }
 }
