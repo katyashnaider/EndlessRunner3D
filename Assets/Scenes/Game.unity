@@ -413,6 +413,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324814008}
   m_CullTransparentMesh: 1
+--- !u!1 &489114163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489114165}
+  - component: {fileID: 489114164}
+  m_Layer: 0
+  m_Name: CoinObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &489114164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489114163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f9ce85889bb41468f6342c9f966a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _capacity: 50
+  _prefabs:
+  - {fileID: 8683552553279089946, guid: 910ba2f55e068864f88987de39530090, type: 3}
+--- !u!4 &489114165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489114163}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1228846844}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,7 +768,7 @@ GameObject:
   - component: {fileID: 1160807849}
   - component: {fileID: 1160807848}
   m_Layer: 0
-  m_Name: ObjectPool
+  m_Name: ObstacleObjectPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -752,12 +798,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160807847}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9348964, y: 54.659317, z: 309.624}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1228846844}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228846843
 GameObject:
@@ -769,6 +815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1228846844}
   - component: {fileID: 1228846845}
+  - component: {fileID: 1228846846}
   m_Layer: 0
   m_Name: RoadPoints
   m_TagString: Untagged
@@ -790,6 +837,8 @@ Transform:
   - {fileID: 78813242}
   - {fileID: 142861056}
   - {fileID: 174362389}
+  - {fileID: 1160807849}
+  - {fileID: 489114165}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -814,6 +863,31 @@ MonoBehaviour:
   _obstaclesOffset: 80
   _delaySpawn: 1
   _delayRemove: 5
+--- !u!114 &1228846846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228846843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f652109a8a32234381d047d054404e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pool: {fileID: 489114164}
+  _spawnPoints:
+  - {fileID: 142861056}
+  - {fileID: 78813242}
+  - {fileID: 174362389}
+  _player: {fileID: 1331837179}
+  _coinsOffset: 80
+  _delaySpawn: 1
+  _delayRemove: 6
+  _minCoinsPerSpawn: 3
+  _maxCoinsPerSpawn: 10
+  _randomYMin: 1
+  _randomYMax: 3
 --- !u!1 &1331837172
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,7 +1050,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1331837172}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1

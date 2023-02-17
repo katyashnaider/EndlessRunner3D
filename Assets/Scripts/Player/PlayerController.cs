@@ -40,8 +40,8 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
 
-        //_colliderJumping.enabled = false;
-        //_standartCollider.enabled = true;
+        _colliderJumping.enabled = false;
+        _standartCollider.enabled = true;
     }
 
     private void FixedUpdate()
@@ -69,17 +69,13 @@ public class PlayerController : MonoBehaviour
         if (direction == Vector2.right)
         {
             if (_index < _shiftRight)
-            {
                 _index++;
-            }
         }
 
         if (direction == Vector2.left)
         {
             if (_index > _shiftLeft)
-            {
                 _index--;
-            }
         }
 
         if (direction == Vector2.up && CheckGround())

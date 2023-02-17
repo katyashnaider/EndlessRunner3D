@@ -38,6 +38,7 @@ public class ObstacleSpawner : MonoBehaviour
         while (true)
         {
             StartCoroutine(Remove(Spawn()));
+
             yield return wait;
         }
     }

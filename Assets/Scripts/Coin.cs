@@ -11,7 +11,7 @@ public class Coin : MonoBehaviour
         if (collider.TryGetComponent(out Player player))
         {
             player.ApplyCoin(_price);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
