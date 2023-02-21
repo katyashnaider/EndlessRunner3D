@@ -26,7 +26,7 @@ public class ObstacleSpawner : MonoBehaviour
         spawnPosition.z = _player.position.z + _obstaclesOffset;
 
         spawned.transform.position = spawnPosition;
-        spawned.transform.rotation = transform.rotation;
+        //spawned.transform.rotation = transform.rotation;
 
         return spawned;
     }

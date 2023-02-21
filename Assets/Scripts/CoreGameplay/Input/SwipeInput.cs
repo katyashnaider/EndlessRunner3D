@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SwipeController : MonoBehaviour
+public class SwipeInput : MonoBehaviour
 {
     [SerializeField] private float _delta;
 
@@ -25,30 +25,21 @@ public class SwipeController : MonoBehaviour
             if (Mathf.Abs(swipeDirection.x) >= _delta)
             {
                 if (swipeDirection.x > 0)
-                {
                     Swiped?.Invoke(Vector2.right);
-                    _isDragging = false;
-                }
                 else
-                {
                     Swiped?.Invoke(Vector2.left);
-                    _isDragging = false;
-                }
+
+                _isDragging = false;
             }
 
-            //прыжок и проскальзывание вниз
             if (Mathf.Abs(swipeDirection.y) >= _delta)
             {
                 if (swipeDirection.y > 0)
-                {
-                    Swiped?.Invoke(Vector2.up); //прыжок
-                    _isDragging = false;
-                }
+                    Swiped?.Invoke(Vector2.up);
                 else
-                {
-                    Swiped?.Invoke(Vector2.down); //проскальзывание вниз
-                    _isDragging = false;
-                }
+                    Swiped?.Invoke(Vector2.down);
+
+                _isDragging = false;
             }
         }
     }

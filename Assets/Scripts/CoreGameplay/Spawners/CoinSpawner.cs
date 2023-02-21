@@ -66,7 +66,7 @@ public class CoinSpawner : MonoBehaviour
             spawnPosition.z = _player.position.z + _coinsOffset + i * distanceBetweenCoins;
 
             coin.transform.position = spawnPosition;
-            coin.transform.rotation = transform.rotation;
+            //coin.transform.rotation = transform.rotation;
 
             spawned[i] = coin;
 

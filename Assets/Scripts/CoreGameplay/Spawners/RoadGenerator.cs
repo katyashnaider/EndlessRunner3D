@@ -36,9 +36,10 @@ public class RoadGenerator : MonoBehaviour
     private void SpawnRoad()
     {
         GameObject nextRoad = _pool.Get();
+        //nextRoad.transform.position = new Vector3(0, -10.75f, _spawnPosition);
         nextRoad.transform.position = transform.forward * _spawnPosition;
-        nextRoad.transform.rotation = transform.rotation;
-
+        //nextRoad.transform.rotation = Quaternion.Euler(-90f, transform.rotation.y, transform.rotation.z);
+        //nextRoad.transform.rotation = transform.rotation;
         _activeRoads.Add(nextRoad);
         _spawnPosition += _roadLength;
     }
@@ -48,9 +49,4 @@ public class RoadGenerator : MonoBehaviour
         _pool.Put(_activeRoads[0]);
         _activeRoads.RemoveAt(0);
     }
-
-    //private float CalculateRoadStartPosition()
-    //{
-    //    return _player.position.z + _roadLength / 2;
-    //}
 }
