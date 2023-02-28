@@ -11,10 +11,6 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float _changeHeight = 0.5f;
 
     private Animator _animator;
-
-    private bool _isGrounded;
-    private bool _isJumping;
-
     private GroundDetector _ground;
 
     private void Start()
@@ -25,14 +21,8 @@ public class PlayerJump : MonoBehaviour
 
     public void TryJump()
     {
-        if (_ground.CheckGround())
+        if (_ground.IsGrounded())
             StartCoroutine(AnimationByTime(transform, _duration));
-    }
-
-    public void UpdateGroundedAndJumpingState(bool isGrounded, bool isJumping)
-    {
-        _isGrounded = isGrounded;
-        _isJumping = isJumping;
     }
 
     private IEnumerator AnimationByTime(Transform playerPosition, float duration)
@@ -41,9 +31,6 @@ public class PlayerJump : MonoBehaviour
         float expiredSeconds = 0f;
         float offset = playerPosition.position.y;
         Vector3 colliderPosition = _collider.center;
-
-        _isGrounded = false;
-        _isJumping = true;
 
         _animator.Play("Jump", 0, 0);
         _collider.center = new Vector3(_collider.center.x, _collider.center.y + _changeHeight, _collider.center.z);
@@ -60,11 +47,6 @@ public class PlayerJump : MonoBehaviour
 
             yield return null;
         }
-
-        _isGrounded = true;
-        _isJumping = false;
-
-        UpdateGroundedAndJumpingState(_isGrounded, _isJumping);
 
         _collider.center = colliderPosition;
     }

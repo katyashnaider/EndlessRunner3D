@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-public class TurnAnimation : MonoBehaviour
+public class RotationAnimator : MonoBehaviour
 {
     public static void StartAnimation(Transform objectTransform)
     {

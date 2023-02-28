@@ -12,6 +12,7 @@ public class ProtectionAndAcceleration : MonoBehaviour
         {
             _player.EnableProtection();
             _player.EnableAcceleration(_playerMovement.Speed);
+            bonus.gameObject.SetActive(false);
         }
     }
 }

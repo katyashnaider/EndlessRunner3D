@@ -26,10 +26,7 @@ public abstract class BonusSpawnerBase<T> : MonoBehaviour where T : MonoBehaviou
         spawnPosition.z = _player.position.z + _offset;
 
         while (CheckColliders(spawnPosition, _radius))
-        {
-            spawnPosition.x += Random.Range(-1f, 1f);
-            spawnPosition.z += Random.Range(-1f, 1f);
-        }
+            spawnPosition.x += Random.Range(spawnPosition.x, -spawnPosition.x);
 
         spawned = _pool.Get();
 
@@ -42,7 +39,7 @@ public abstract class BonusSpawnerBase<T> : MonoBehaviour where T : MonoBehaviou
 
         foreach (var collider in colliders1)
         {
-            if (collider.TryGetComponent(out Obstacle obstacle) || collider.TryGetComponent(out Coin coin)  || collider.TryGetComponent(out BonusDoublingCoin bonusDoublingCoin) || collider.TryGetComponent(out BonusProtectionAndAcceleration bonusProtectionAndAcceleration))
+            if (collider.TryGetComponent(out Obstacle obstacle) || collider.TryGetComponent(out Coin coin)  || collider.TryGetComponent(out BonusDoubleCoin bonusDoublingCoin) || collider.TryGetComponent(out BonusProtectionAndAcceleration bonusProtectionAndAcceleration))
                 return true;
         }         
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BonusProtectionAndAcceleration : MonoBehaviour
+public class BonusDoubleCoin : MonoBehaviour
 {
     private void Start()
     {

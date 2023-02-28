@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,8 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private TMP_Text _coinsCountText;
 
     private string _coinKey = "Coins";
+
+    public event Action GameRestart; 
 
     private void Start()
     {
@@ -39,7 +42,7 @@ public class GameOverScreen : MonoBehaviour
 
     private void OnRestartButtonClick()
     {
-        Timer.OnGameRestart();
+        GameRestart?.Invoke();
         UpdateCoinsCount();
 
         SceneManager.LoadScene(0);

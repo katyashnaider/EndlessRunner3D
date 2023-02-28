@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Remove : MonoBehaviour
+public class Removal : MonoBehaviour
 {
     [SerializeField] private ObstaclePool _obstacleSpawn;
     [SerializeField] private CoinPool _coinSpawn;
     [SerializeField] private RoadPool _roadGenerator;
     [SerializeField] private LandscapePool _landscapeSpawn;
     [SerializeField] private BonusProtectionAndAccelerationPool _bonusProtectionAndAccelerationSpawn;
-    [SerializeField] private BonusDoublingCoinPool _bonusDoublingCoinSpawn;
+    [SerializeField] private BonusDoubleCoinPool _bonusDoublingCoinSpawn;
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -28,7 +28,7 @@ public class Remove : MonoBehaviour
         if (collider.TryGetComponent(out BonusProtectionAndAcceleration bonusProtectionAndAcceleration))
             _bonusProtectionAndAccelerationSpawn.Put(bonusProtectionAndAcceleration);
 
-        if (collider.TryGetComponent(out BonusDoublingCoin bonusDoublingCoin))
+        if (collider.TryGetComponent(out BonusDoubleCoin bonusDoublingCoin))
             _bonusDoublingCoinSpawn.Put(bonusDoublingCoin);
         
     }
