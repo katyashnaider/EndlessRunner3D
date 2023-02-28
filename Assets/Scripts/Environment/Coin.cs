@@ -1,17 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    private int _price = 1;
+    public const int Amount = 1;
 
-    private void OnTriggerEnter(Collider collider)
+    private void Start()
     {
-        if (collider.TryGetComponent(out Player player))
-        {
-            player.ApplyCoin(_price);
-            gameObject.SetActive(false);
-        }
+        TurnAnimation.StartAnimation(transform);
+    }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
     }
 }

@@ -1,54 +1,43 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] private ObjectPool _pool;
+    [SerializeField] private ObstaclePool _pool;
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Transform _player;
+    [SerializeField] private AnimationCurve _spawnDelayRange;
 
     [SerializeField] private float _obstaclesOffset = 80;
-    [SerializeField] private float _delaySpawn = 1;
-    [SerializeField] private float _delayRemove = 1;
+
+    public float DelaySpawn => _spawnDelayRange.Evaluate(Timer.PlayTime);
 
     private void Start()
     {
         StartCoroutine(SpawnDelayed());
     }
 
-    private GameObject Spawn()
+    private Obstacle Spawn()
     {
         int spawnPointNumber = Random.Range(0, _spawnPoints.Length);
-        GameObject spawned = _pool.Get();
+        Obstacle spawned = _pool.Get();
 
         Vector3 spawnPosition = _spawnPoints[spawnPointNumber].position;
-
         spawnPosition.z = _player.position.z + _obstaclesOffset;
-
-        spawned.transform.position = spawnPosition;
-        //spawned.transform.rotation = transform.rotation;
+        spawned.transform.position = new Vector3(spawnPosition.x, transform.position.y, spawnPosition.z);
 
         return spawned;
     }
 
     private IEnumerator SpawnDelayed()
     {
-        var wait = new WaitForSeconds(_delaySpawn);
-
         while (true)
         {
-            StartCoroutine(Remove(Spawn()));
+            Spawn();
 
-            yield return wait;
+            yield return new WaitForSeconds(DelaySpawn);
         }
-    }
-
-    private IEnumerator Remove(GameObject obstacle)
-    {
-        var wait = new WaitForSeconds(_delayRemove);
-
-        yield return wait;
-
-        _pool.Put(obstacle);
-    }
+    }  
 }

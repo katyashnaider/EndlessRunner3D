@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private Transform _player;
+    [SerializeField] private Player _player;
     [SerializeField] private TMP_Text _scoreText;
+    [SerializeField] private TMP_Text _bestScoreText;
+
+    public int ScoreCounter { get; private set; } = 0;
 
     private void Update()
     {
-        _scoreText.text = ((int)(_player.position.z / 2)).ToString();
+        ScoreCounter = (int)_player.transform.position.z / 2;
+        _scoreText.text = ScoreCounter.ToString() + "/" + Characteristics.BestScore;
     }
 }

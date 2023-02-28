@@ -3,25 +3,31 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private int _wallet = 0;
+    public event Action Died;
+    public event Action GameOver;
+    public event Action<int> CoinsAmountChanged;
 
-    public Action Died;
+    private void Start()
+    {
+        CoinsAmountChanged?.Invoke(Characteristics.Coins);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Obstacle obstacle))
+        if (collision.gameObject.TryGetComponent(out Obstacle _))
         {
             OnDied();            
         }
     }
 
-    public void ApplyCoin(int money)
+    public void ApplyCoin(int amount)
     {
-        _wallet += money;
+        CoinsAmountChanged?.Invoke(Characteristics.Coins + amount);
     }
 
     private void OnDied()
     {
-        Died?.Invoke();       
+        Died?.Invoke();
+        GameOver?.Invoke();
     }
 }

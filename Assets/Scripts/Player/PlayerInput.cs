@@ -7,6 +7,7 @@
 public class PlayerInput : MonoBehaviour
 {
     private RoadSwitcher _roadSwitcher;
+    private Animator _animator;
     private SwipeInput _swipes;
     private PlayerJump _player;
     private PlayerRollOver _playerRollOver;
@@ -22,6 +23,7 @@ public class PlayerInput : MonoBehaviour
         _player = GetComponent<PlayerJump>();
         _playerRollOver = GetComponent<PlayerRollOver>();
         _roadSwitcher = GetComponent<RoadSwitcher>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
