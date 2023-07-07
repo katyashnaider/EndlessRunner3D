@@ -24,7 +24,6 @@ public class GameOverScreen : MonoBehaviour
         UpdateCoinsCount();
     }
 
-
     private void OnEnable()
     {
         _restartButton.onClick.AddListener(OnRestartButtonClick);
@@ -45,7 +44,7 @@ public class GameOverScreen : MonoBehaviour
         GameRestart?.Invoke();
         UpdateCoinsCount();
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;
         Time.timeScale = 1;
@@ -60,7 +59,7 @@ public class GameOverScreen : MonoBehaviour
 
     private void OnToMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     private void UpdateCoinsCount()

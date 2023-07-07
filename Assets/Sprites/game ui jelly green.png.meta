@@ -129,7 +129,7 @@ TextureImporter:
       213: 5967474290176208844
     second: game ui jelly green_41
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -150,6 +150,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -188,6 +189,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -227,6 +229,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1132,6 +1146,49 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      game ui jelly green_7: 4704651576033479814
+      game ui jelly green_5: -1375757405450291694
+      game ui jelly green_25: -3703842840497568255
+      game ui jelly green_41: 5967474290176208844
+      game ui jelly green_4: -280899165316483926
+      game ui jelly green_12: -7081216935002565150
+      game ui jelly green_30: -6180087708336752375
+      game ui jelly green_13: 4199597086084280138
+      game ui jelly green_27: -7569433888984733483
+      game ui jelly green_32: -8816921884015929971
+      game ui jelly green_34: -4645216616567710630
+      game ui jelly green_33: 2968468749198980076
+      game ui jelly green_8: -8386677158209562111
+      game ui jelly green_38: 4828237119922987782
+      game ui jelly green_10: 595203810038548836
+      game ui jelly green_26: -3455559867176655168
+      game ui jelly green_29: -4312683407504797608
+      game ui jelly green_16: 7006548869592247373
+      game ui jelly green_28: 8011338962046901562
+      game ui jelly green_35: -8534191198063214164
+      game ui jelly green_31: -7796719060352750248
+      game ui jelly green_39: 3892722427879385756
+      game ui jelly green_9: 957291696277127896
+      game ui jelly green_11: -7795071915165694729
+      game ui jelly green_22: -2191374920697959210
+      game ui jelly green_1: 786897527495593333
+      game ui jelly green_20: 783065864983233927
+      game ui jelly green_37: -4368151560445017010
+      game ui jelly green_18: -9170784257749581324
+      game ui jelly green_40: -5754553007053396539
+      game ui jelly green_21: 5812037771293822263
+      game ui jelly green_3: 6083364030076017393
+      game ui jelly green_15: 6869123830255852228
+      game ui jelly green_24: -1535728755970466070
+      game ui jelly green_14: -5715303830791437996
+      game ui jelly green_2: -3574192384240944335
+      game ui jelly green_0: -2915127756039946068
+      game ui jelly green_36: 4830314350028631548
+      game ui jelly green_6: -512522861533036362
+      game ui jelly green_23: -8040835829555943354
+      game ui jelly green_19: 8800953955472293932
+      game ui jelly green_17: -1661251300546869282
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

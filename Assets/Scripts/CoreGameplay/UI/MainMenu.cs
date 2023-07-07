@@ -9,8 +9,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button _exitButton;
     [SerializeField] private TMP_Text _coinsCountText;
     [SerializeField] private TMP_Text _bestScoreText;
-
-
     private void Start()
     {
         _coinsCountText.text = Characteristics.GetCoins().ToString();
@@ -32,7 +30,7 @@ public class MainMenu : MonoBehaviour
 
     private void OnPlayGameButtonClick()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     private void OnExitButtonClick()
